@@ -36,10 +36,6 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
 set nolist
 " set list;
 " set listchars=eol:$,tab:>-,space:·
@@ -53,11 +49,7 @@ filetype plugin indent on
 set notimeout
 set textwidth=80
 set mouse=a
-" set winaltkeys=no
-" set mappmodifier=<Alt>
 let mapleader=" "
-"let mappmodifier=""
-
 
 
 call plug#begin('~/.config/nvim/plugged')
@@ -142,7 +134,7 @@ let g:airline_theme = 'zenburn'
 " ===
 " === onedark
 " ===
-colorscheme onedark
+" colorscheme onedark
 " let g:onedark_terminal_italics = 0
 " let g:airline_theme='onedark'
 "
@@ -484,8 +476,8 @@ nmap ga <Plug>(EasyAlign)
 "
 " Close the tab if NERDTree is the only window remaining in it.
 " autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-nmap <LEADER>nn :NERDTreeToggle<CR>
-nmap <LEADER>nf :NERDTreeFocus<CR>
+nnoremap <LEADER>nn :NERDTreeToggle<CR>
+nnoremap <LEADER>nf :NERDTreeFocus<CR>
 
 
 " ===
@@ -494,25 +486,25 @@ nmap <LEADER>nf :NERDTreeFocus<CR>
 "
 " let g:fzf_command_prefix = 'fzf'
 " float window version
-nmap <LEADER>sb :Buffers<CR>
-nmap <LEADER>sf :Files<CR>
-nmap <LEADER>si :Lines<CR>
-nmap <LEADER>sL :Rg<CR>
-nmap <LEADER>st :BTags<CR>
-nmap <LEADER>sT :Tags<CR>
-nmap <LEADER>sw :Windows<CR>
-nmap <LEADER>sm :Marks<CR>
-nmap <LEADER>sh :History<CR>
-nmap <LEADER>s: :History:<CR>
-nmap <LEADER>s/ :History/<CR>
-nmap <LEADER>sg :GFiles?<CR>
-nmap <LEADER>sG :Commits<CR>
-nmap <LEADER>sc :Colors<CR>
-nmap <LEADER>sd :Files 
+nnoremap <LEADER>sb :Buffers<CR>
+nnoremap <LEADER>sf :Files<CR>
+nnoremap <LEADER>si :Lines<CR>
+nnoremap <LEADER>sL :Rg<CR>
+nnoremap <LEADER>st :BTags<CR>
+nnoremap <LEADER>sT :Tags<CR>
+nnoremap <LEADER>sw :Windows<CR>
+nnoremap <LEADER>sm :Marks<CR>
+nnoremap <LEADER>sh :History<CR>
+nnoremap <LEADER>s: :History:<CR>
+nnoremap <LEADER>s/ :History/<CR>
+nnoremap <LEADER>sg :GFiles?<CR>
+nnoremap <LEADER>sG :Commits<CR>
+nnoremap <LEADER>sc :Colors<CR>
+nnoremap <LEADER>sd :Files 
 
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
-nmap <Leader>sn :DashboardNewFile<CR>
+nnoremap <Leader>ss :<C-u>SessionSave<CR>
+nnoremap <Leader>sl :<C-u>SessionLoad<CR>
+nnoremap <Leader>sn :DashboardNewFile<CR>
 
 let g:dashboard_default_executive ='fzf'
 let g:dashboard_custom_shortcut = {
@@ -540,23 +532,6 @@ let g:dashboard_custom_header = [
 \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
 \ ' 										Be your own hero.',
 \]
-" autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
-
-" full window version
-" nmap SSb :Buffers!<CR>
-" nmap SSf :Files!<CR>
-" nmap SSl :Lines!<CR>
-" nmap SSL :Rg!<CR>
-" nmap SSt :BTags!<CR>
-" nmap SST :Tags!<CR>
-" nmap SSw :Windows!<CR>
-" nmap SSm :Marks!<CR>
-" nmap SSh :History!<CR>
-" nmap SS: :History:!<CR>
-" nmap SS/ :History/!<CR>
-" nmap SSg :GFiles?!<CR>
-" nmap SSG :Commits!<CR>
-
 "
 "
 " ===
@@ -585,14 +560,13 @@ let g:asyncrun_bell = 1
 let g:asyncrun_save = 2
 " let g:asyncrun_exit = "<C-w>j"
 
-noremap <silent><f5> :AsyncTask file-run<cr><C-w>H<C-w>l
-noremap <silent><f9> :AsyncTask file-build<cr><C-w>H<C-w>l
-noremap <silent><f6> :AsyncTask project-run<cr><C-w>H<C-w>l
-noremap <silent><f7> :AsyncTask project-build<cr><C-w>H<C-w>l
+noremap <silent><f5> :AsyncTask file-run<cr>
+noremap <silent><f9> :AsyncTask file-build<cr>
+noremap <silent><f6> :AsyncTask project-run<cr>
+noremap <silent><f7> :AsyncTask project-build<cr>
 
 let g:asynctasks_term_pos = 'right'
 
-" nmap <LEADER>r :AsyncRun -raw python3 %<CR><C-w>j
 
 " ===
 " === nerdcommenter
@@ -846,8 +820,6 @@ EOF
 lua require('plugins')
 "------------------------------------------------------------------
 "------------------------------------------------------------------
-" nmap <C-h> :bprevious<CR>
-" nmap <C-l> :bnext<CR>
 
 syntax on
 set number
@@ -865,10 +837,9 @@ set incsearch
 set ignorecase
 set smartcase
 
-map ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
+nnoremap ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
 
 vnoremap Y "+y
-" vnoremap ss S
 
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
@@ -878,35 +849,24 @@ noremap J 5<down>
 inoremap <C-b> <BS>
 inoremap <C-d> <Delete>
 inoremap <C-l> <Esc>la
-" map <Tab><Tab> Gzz
-map R :source ~/.config/nvim/init.vim<CR>:nohlsearch<CR>
-map sc :e ~/.config/nvim/init.vim<CR>
-map sa :e ~/.config/nvim/lua/plugins.lua<CR>
-map sfi :r !figlet 
-map S :w<CR>
-map Q :q!<CR>
-" nmap <C-s> :w<CR>
-" nmap <C-q> :q!<CR>
-map sq :bd<CR>
+nnoremap R :source ~/.config/nvim/init.vim<CR>:nohlsearch<CR>
+nnoremap sc :e ~/.config/nvim/init.vim<CR>
+nnoremap sa :e ~/.config/nvim/lua/plugins.lua<CR>
+nnoremap sfi :r !figlet 
+nnoremap S :w<CR>
+nnoremap Q :q!<CR>
+nnoremap sq :bd<CR>
 map s <nop>
-" noremap ss s
 map ss <nop>
-map <LEADER><right> :set splitright<CR>:vsp<CR>
-map <LEADER><left> :set nosplitright<CR>:vsp<CR>
-map <LEADER><down> :set splitright<CR>:sp<CR>
-map <LEADER><up> :set nosplitright<CR>:sp<CR>
-map ,f <ESC>/<++><CR>:nohlsearch<CR>c4l
-map ,m <Esc>a<++><Esc>2h
-noremap s; mzA;<Esc>`z:delm z<CR>
-" map T :tabe<CR>
-" map st :tabe<CR><C-o>
-" map L :+tabnext<CR>
-" map H :-tabnext<CR>
+nnoremap <LEADER><right> :set splitright<CR>:vsp<CR>
+nnoremap <LEADER><left> :set nosplitright<CR>:vsp<CR>
+nnoremap <LEADER><down> :set splitright<CR>:sp<CR>
+nnoremap <LEADER><up> :set nosplitright<CR>:sp<CR>
+nnoremap ,f <ESC>/<++><CR>:nohlsearch<CR>c4l
+nnoremap ,m <Esc>a<++><Esc>2h
+nnoremap s; mzA;<Esc>`z:delm z<CR>
 
-nmap D ^d$
-" , notation
-imap <A-x> <Esc>la
-imap <A-z> <Esc>i
+nnoremap D ^d$
 
 " When set spell, <C-c> to convert word under cursor into similar word
 map <LEADER>sp :set spell!<CR>
@@ -917,13 +877,13 @@ map <A-l> :vertical res +1<CR>
 map <A-h> :vertical res -1<CR>
 map <A-j> :res -1<CR>
 map <A-k> :res +1<CR>
+
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 set cursorline
-" set cursorcolumn
+set nocursorcolumn
 set scrolloff=15
-
 
 " to reload rainbow plug after source vimrc
 call rainbow_main#load()
@@ -936,5 +896,3 @@ if exists('g:nvui')
   NvuiCmdFontSize 11.0
   NvuiScrollAnimationDuration 0.2
 endif
-
-" autocmd BufNewFile * source ~/.config/nvim/init.vim
