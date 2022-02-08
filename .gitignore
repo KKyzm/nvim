@@ -1,1 +1,6 @@
-/plugged/
+plugged/
+plugin/
+autoload/
+lua/
+pack/
+!plugins.lua
