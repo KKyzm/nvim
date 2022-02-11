@@ -24,13 +24,13 @@
 "
 " Check if vim-plug is installed.
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-
 silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-
 endif
 
+if empty(glob('~/.local/share/nvim/site/pack/packer/start/packer.nvim'))
+silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+endif
 
 map <up> <nop>
 map <down> <nop>
@@ -60,7 +60,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'kshenoy/vim-signature'
 	" copy&paste register
 	Plug 'junegunn/vim-peekaboo'
-	Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+	" need Go
+	" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+	"
 		" @@ unused @@ 
 	" Plug 'ianding1/leetcode.vim'
 
@@ -120,6 +122,10 @@ call plug#end()
 
 let g:airline_theme = 'zenburn'
 
+" ==============
+" === COLORS ===
+" ==============
+
 " colorscheme snazzy
 " colors deus
 "
@@ -134,8 +140,8 @@ let g:airline_theme = 'zenburn'
 " ===
 " === onedark
 " ===
-" colorscheme onedark
-" let g:onedark_terminal_italics = 0
+colorscheme onedark
+let g:onedark_terminal_italics = 1
 " let g:airline_theme='onedark'
 "
 " colorscheme space-vim-dark
@@ -155,14 +161,14 @@ if has('termguicolors')
 	set termguicolors
 endif
 " For dark version.
-set background=dark
+" set background=dark
 " For light version.
 " set background=light
 " Set contrast.
 " This configuration option should be placed before `colorscheme gruvbox-material`.
 " Available values: 'hard', 'medium'(default), 'soft'
-let g:gruvbox_material_background = 'medium'
-colorscheme gruvbox-material
+" let g:gruvbox_material_background = 'medium'
+" colorscheme gruvbox-material
 " >>> bug
 " let g:airline_theme = 'gruvbox_material'
 "
@@ -603,7 +609,7 @@ let g:NERDToggleCheckAllLines = 1
 " ===
 " === COC
 " ===
-let g:coc_global_extensions=['coc-vimlsp', 'coc-marketplace', 'coc-ccls', 'coc-clangd', 'coc-translator']
+let g:coc_global_extensions=['coc-vimlsp', 'coc-marketplace', 'coc-clangd', 'coc-translator']
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
