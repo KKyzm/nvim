@@ -93,7 +93,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tpope/vim-surround'
 	Plug 'gcmt/wildfire.vim'
-	Plug 'preservim/nerdcommenter'
 
 	Plug 'sheerun/vim-polyglot'
 
@@ -120,37 +119,32 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-let g:airline_theme = 'zenburn'
 
 " ==============
 " === COLORS ===
 " ==============
 
 " colorscheme snazzy
-" colors deus
-"
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" if (has("termguicolors"))
-" set termguicolors
-" endif
 " colorscheme tender
-" let g:airline_theme = 'tender'
-"
-"
-" ===
-" === onedark
-" ===
-colorscheme onedark
-let g:onedark_terminal_italics = 1
-" let g:airline_theme='onedark'
-"
+" colorscheme deus
 " colorscheme space-vim-dark
+" colorscheme onedark
+colorscheme one
+" This configuration option should be placed before `colorscheme gruvbox-material`.
+" Available values: 'hard', 'medium'(default), 'soft'
+" let g:gruvbox_material_background = 'medium'
+" colorscheme gruvbox-material
 "
-" colorscheme one
+" let g:airline_theme = 'tender'
+" let g:airline_theme = 'zenburn'
 " let g:airline_theme='one'
+let g:airline_theme='onedark'
+"
+let g:one_allow_italics = 1 " I love italic for comments
+" let g:onedark_terminal_italics = 1
+"
 " set background=dark " for the dark version
 " set background=light " for the light version
-" let g:one_allow_italics = 1 " I love italic for comments
 
 
 " ===
@@ -160,34 +154,26 @@ let g:onedark_terminal_italics = 1
 if has('termguicolors')
 	set termguicolors
 endif
-" For dark version.
-" set background=dark
-" For light version.
-" set background=light
-" Set contrast.
-" This configuration option should be placed before `colorscheme gruvbox-material`.
-" Available values: 'hard', 'medium'(default), 'soft'
-" let g:gruvbox_material_background = 'medium'
-" colorscheme gruvbox-material
-" >>> bug
-" let g:airline_theme = 'gruvbox_material'
-"
-let g:gruvbox_material_enable_italic = 0
-let g:gruvbox_material_enable_bold = 1
+set termguicolors
+if &term =~# '^screen'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+" let g:gruvbox_material_enable_italic = 0
+" let g:gruvbox_material_enable_bold = 1
 " only work in GUI clients
 " let g:gruvbox_material_cursor = 'green'
-let g:gruvbox_material_transparent_background = 0
-let g:gruvbox_material_diagnostic_text_highlight = 1
-let g:gruvbox_material_diagnostic_line_highlight = 1
-let g:gruvbox_material_diagnostic_virtual_text = 'colored'
-let g:gruvbox_material_current_word = 'bold'
-let g:gruvbox_material_statusline_style = 'original'
+" let g:gruvbox_material_transparent_background = 0
+" let g:gruvbox_material_diagnostic_text_highlight = 1
+" let g:gruvbox_material_diagnostic_line_highlight = 1
+" let g:gruvbox_material_diagnostic_virtual_text = 'colored'
+" let g:gruvbox_material_current_word = 'bold'
+" let g:gruvbox_material_statusline_style = 'original'
 
 
 let g:DevIconsEnableFoldersOpenClose = 1
 syntax enable
 
-" hi Comment cterm=italic guifg=#5c6370 ctermfg=59
 
 " ===
 " === airline
@@ -408,7 +394,8 @@ let g:autoformat_verbosemode=1 "开启详细模式便于查错
 autocmd BufWrite *.c,*.cc,*.hh,*.py,*.json,*.lua :Autoformat
 let g:python3_host_prog="/usr/bin/python3"
 
-let g:formatdef_clangformat_google = '"clang-format -style=\"{BasedOnStyle: google, IndentWidth: 4}\""'
+" let g:formatdef_clangformat_google = '"clang-format -style=\"{BasedOnStyle: google, IndentWidth: 4}\""'
+let g:formatdef_clangformat_google = '"clang-format"'
 let g:formatdef_jsbeautify = '"js-beautify"'
 let g:formatters_c = ['clangformat_google']
 let g:formatters_jsonc = ['jsbeautify']
