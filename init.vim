@@ -264,15 +264,15 @@ nnoremap <LEADER>hd :HopChar2<CR>
 " ===
 " === wildfire (select text objects with <CR> & <BS>)
 " ===
-let g:wildfire_objects = ["i'", 'i>', 'i"', "i)", "i]", "i}", "ip", "it"]
+let g:wildfire_objects = ["iw", "iW", "i'", 'i>', 'i"', "i)", "i]", "i}", "ip", "it"]
 nmap <leader>ws <Plug>(wildfire-quick-select)
 
 
 " ===
 " === barbar
 " ===
-nnoremap <silent>    <A-,> :BufferPrevious<CR>
-nnoremap <silent>    <A-.> :BufferNext<CR>
+nnoremap <silent>    <A-o> :BufferPrevious<CR>
+nnoremap <silent>    <A-i> :BufferNext<CR>
 " Re-order to previous/next
 nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
 nnoremap <silent>    <A->> :BufferMoveNext<CR>
@@ -833,6 +833,9 @@ set smartcase
 nnoremap ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
 
 vnoremap Y "+y
+
+" switch windows
+nnoremap sw <C-w><C-w>
 
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
