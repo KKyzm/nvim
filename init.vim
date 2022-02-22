@@ -1,9 +1,9 @@
 "
-"    _ __ ___  _   _  __   _(_)_ __ ___  _ __ ___ 
+"    _ __ ___  _   _  __   _(_)_ __ ___  _ __ ___
 "  | '_ ` _ \| | | | \ \ / / | '_ ` _ \| '__/ __|
-" | | | | | | |_| |  \ V /| | | | | | | | | (__ 
+" | | | | | | |_| |  \ V /| | | | | | | | | (__
 "|_| |_| |_|\__, |___\_/ |_|_| |_| |_|_|  \___|
-"           |___/_____|                        
+"           |___/_____|
 "
 " fzf
 " nodejs
@@ -11,25 +11,25 @@
 " clangd
 " clang-format
 " riggrep
-" 
-	" cd ~/.config/coc/extensions/node_modules/coc-ccls
-	" ln -s node_modules/ws/lib lib
+"
+" cd ~/.config/coc/extensions/node_modules/coc-ccls
+" ln -s node_modules/ws/lib lib
 "
 " pynvim
-" keyring 
+" keyring
 " browser-cookie3
-	" pip3 install pynvim --user
-	" pip3 install keyring browser-cookie3 --user
+" pip3 install pynvim --user
+" pip3 install keyring browser-cookie3 --user
 "
 "
 " Check if vim-plug is installed.
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 if empty(glob('~/.local/share/nvim/site/pack/packer/start/packer.nvim'))
-silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+	silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 endif
 
 map <up> <nop>
@@ -53,70 +53,70 @@ let mapleader=" "
 
 
 call plug#begin('~/.config/nvim/plugged')
-	
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
-	Plug 'kshenoy/vim-signature'
-	" copy&paste register
-	Plug 'junegunn/vim-peekaboo'
-	" need Go
-	" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-	"
-		" @@ unused @@ 
-	" Plug 'ianding1/leetcode.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
-	Plug 'RRethy/vim-illuminate'
-	Plug 'honza/vim-snippets'
-	Plug 'Sirver/ultisnips'
+Plug 'kshenoy/vim-signature'
+" copy&paste register
+Plug 'junegunn/vim-peekaboo'
+" need Go
+" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+"
+" @@ unused @@
+" Plug 'ianding1/leetcode.vim'
 
-	Plug 'ajmwagar/vim-deus'
-	Plug 'jacoborus/tender.vim'
-	Plug 'joshdick/onedark.vim'
-	Plug 'liuchengxu/space-vim-dark'
-	Plug 'rakr/vim-one'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'connorholyday/vim-snazzy'
-	Plug 'sainnhe/gruvbox-material'
+Plug 'RRethy/vim-illuminate'
+Plug 'honza/vim-snippets'
+Plug 'Sirver/ultisnips'
 
-		" @@ unused @@
-	Plug 'junegunn/vim-easy-align' 
+Plug 'ajmwagar/vim-deus'
+Plug 'jacoborus/tender.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'connorholyday/vim-snazzy'
+Plug 'sainnhe/gruvbox-material'
 
-	Plug 'skywind3000/asyncrun.vim'
-	Plug 'skywind3000/asynctasks.vim'
-	Plug 'vim-autoformat/vim-autoformat'
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
+" @@ unused @@
+Plug 'junegunn/vim-easy-align'
 
-	Plug 'luochen1990/rainbow'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'tpope/vim-surround'
-	Plug 'gcmt/wildfire.vim'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'vim-autoformat/vim-autoformat'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-	Plug 'sheerun/vim-polyglot'
+Plug 'luochen1990/rainbow'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'gcmt/wildfire.vim'
 
-	Plug 'kyazdani42/nvim-web-devicons'
-	Plug 'romgrk/barbar.nvim'
+Plug 'sheerun/vim-polyglot'
 
-	Plug 'preservim/nerdcommenter'
-	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-	Plug 'Xuyuanp/nerdtree-git-plugin'
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	Plug 'PhilRunninger/nerdtree-buffer-ops'
-	Plug 'PhilRunninger/nerdtree-visual-selection'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 
-	Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-	Plug 'mg979/vim-visual-multi'
-	" Plug 'liuchengxu/vista.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'PhilRunninger/nerdtree-buffer-ops'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 
-	Plug 'tpope/vim-repeat'
-	"
-	Plug 'glepnir/dashboard-nvim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'mg979/vim-visual-multi'
+" Plug 'liuchengxu/vista.vim'
 
-	Plug 'psliwka/vim-smoothie'
+Plug 'tpope/vim-repeat'
+"
+Plug 'glepnir/dashboard-nvim'
 
-	Plug 'ryanoasis/vim-devicons'
+Plug 'psliwka/vim-smoothie'
+
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 
@@ -156,8 +156,8 @@ if has('termguicolors')
 endif
 set termguicolors
 if &term =~# '^screen'
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 " let g:gruvbox_material_enable_italic = 0
 " let g:gruvbox_material_enable_bold = 1
@@ -178,9 +178,9 @@ syntax enable
 " ===
 " === airline
 " ===
-set laststatus=2  "永远显示状态栏let 
+set laststatus=2  "永远显示状态栏let
 let g:airline_powerline_fonts=1  " 支持 powerline 字体
-let g:airline#extensions#tabline#enabled=0 "显示窗口tab和bufferlet 
+let g:airline#extensions#tabline#enabled=0 "显示窗口tab和bufferlet
 " let g:airline#extensions#tabline#buffer_idx_mode=1
 "g:airline_theme='moloai'
 if !exists('g:airline_symbols')
@@ -214,40 +214,40 @@ let g:airline_symbols.dirty='⚡'
 " ===
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = {
-	    "c",
-		"cpp",
-		"python",
-		"lua",
-		"vim",
-		"json",
-		"html",
-		"javascript",
-  },
+	-- One of "all", "maintained" (parsers with maintainers), or a list of languages
+ensure_installed = {
+	"c",
+	"cpp",
+	"python",
+	"lua",
+	"vim",
+	"json",
+	"html",
+	"javascript",
+	},
 
-  -- Install languages synchronously (only applied to `ensure_installed`)
-  sync_install = true,
+-- Install languages synchronously (only applied to `ensure_installed`)
+sync_install = true,
 
-  -- List of parsers to ignore installing
-  -- ignore_install = { "javascript" },
+-- List of parsers to ignore installing
+-- ignore_install = { "javascript" },
 
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
+highlight = {
+	-- `false` will disable the whole extension
+enable = true,
 
-    -- list of language that will be disabled
-    -- disable = { "c", "rust" },
+-- list of language that will be disabled
+-- disable = { "c", "rust" },
 
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
+-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+-- Using this option may slow down your editor, and you may see some duplicate highlights.
+-- Instead of true it can also be a list of languages
+additional_vim_regex_highlighting = false,
+},
   indent = {
-    enable = false,
-    disable = {},
+  enable = false,
+  disable = {},
   },
 }
 EOF
@@ -274,8 +274,8 @@ nmap <leader>ws <Plug>(wildfire-quick-select)
 nnoremap <silent>    <A-o> :BufferPrevious<CR>
 nnoremap <silent>    <A-i> :BufferNext<CR>
 " Re-order to previous/next
-nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
-nnoremap <silent>    <A->> :BufferMoveNext<CR>
+nnoremap <silent>    <A-O> :BufferMovePrevious<CR>
+nnoremap <silent>    <A-I> :BufferMoveNext<CR>
 " Goto buffer in position...
 nnoremap <silent>    <A-1> :BufferGoto 1<CR>
 nnoremap <silent>    <A-2> :BufferGoto 2<CR>
@@ -376,7 +376,7 @@ let bufferline.semantic_letters = v:true
 " optimal for the qwerty keyboard layout but might need adjustement
 " for other layouts.
 let bufferline.letters =
-  \ 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP'
+			\ 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP'
 
 " Sets the name of unnamed buffers. By default format is "[Buffer X]"
 " where X is the buffer number. But only a static string is accepted here.
@@ -391,14 +391,15 @@ hi link BufferVisibleMod Label
 " ===
 " clang-format, python3-autopep8, js-beautify, black, stylua
 let g:autoformat_verbosemode=1 "开启详细模式便于查错
-autocmd BufWrite *.c,*.cc,*.hh,*.py,*.json,*.lua :Autoformat
+" autocmd BufWrite *.c,*.cc,*.hh,*.py,*.json,*.lua :Autoformat
+nnoremap <C-A-f> :Autoformat<CR>
+vnoremap <C-A-f> :Autoformat<CR>
 let g:python3_host_prog="/usr/bin/python3"
 
-" let g:formatdef_clangformat_google = '"clang-format -style=\"{BasedOnStyle: google, IndentWidth: 4}\""'
-let g:formatdef_clangformat_google = '"clang-format"'
-let g:formatdef_jsbeautify = '"js-beautify"'
-let g:formatters_c = ['clangformat_google']
-let g:formatters_jsonc = ['jsbeautify']
+" let g:formatdef_clangformat = '"clang-format -style=\"{BasedOnStyle: google, IndentWidth: 4}\""'
+" let g:formatdef_jsbeautify = '"js-beautify"'
+let g:formatters_c = ['clangformat']
+let g:formatters_jsonc = ['js-beautify']
 let g:formatters_python = ['black']
 let g:formatters_lua = ['stylua']
 
@@ -426,9 +427,9 @@ let g:Illuminate_delay = 500
 let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftwhitelist = ['python', 'vim', 'sh', 'c', 'h', 'cc', 'hh', 'cpp', 'hpp']
 augroup illuminate_augroup
-    autocmd!
+	autocmd!
 	autocmd VimEnter * hi link illuminatedWord MatchParen
-    " autocmd VimEnter * hi illuminatedWord ctermbg=#212121 guibg=#212121
+	" autocmd VimEnter * hi illuminatedWord ctermbg=#212121 guibg=#212121
 augroup END
 
 
@@ -444,13 +445,13 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" 
+"
 " set hidden
 " set shortmess+=c
 " set updatetime=100
-" 
+"
 
-" 
+"
 " let g:lightline = {
 "       \ 'colorscheme': 'hydrangea',
 "       \ 'component': {
@@ -493,7 +494,7 @@ nnoremap <LEADER>s/ :History/<CR>
 nnoremap <LEADER>sg :GFiles?<CR>
 nnoremap <LEADER>sG :Commits<CR>
 nnoremap <LEADER>sc :Colors<CR>
-nnoremap <LEADER>sd :Files 
+nnoremap <LEADER>sd :Files
 
 nnoremap <Leader>ss :<C-u>SessionSave<CR>
 nnoremap <Leader>sl :<C-u>SessionLoad<CR>
@@ -501,14 +502,14 @@ nnoremap <Leader>sn :DashboardNewFile<CR>
 
 let g:dashboard_default_executive ='fzf'
 let g:dashboard_custom_shortcut = {
-\ 'last_session'       : 'SPC s l',
-\ 'find_history'       : 'SPC s h',
-\ 'find_file'          : 'SPC s f',
-\ 'new_file'           : 'SPC s n',
-\ 'change_colorscheme' : 'SPC s c',
-\ 'find_word'          : 'SPC s L',
-\ 'book_marks'         : 'SPC s m',
-\ }
+			\ 'last_session'       : 'SPC s l',
+			\ 'find_history'       : 'SPC s h',
+			\ 'find_file'          : 'SPC s f',
+			\ 'new_file'           : 'SPC s n',
+			\ 'change_colorscheme' : 'SPC s c',
+			\ 'find_word'          : 'SPC s L',
+			\ 'book_marks'         : 'SPC s m',
+			\ }
 
 " let g:dashboard_preview_pipeline = 'lolcat'
 " let g:dashboard_preview_command = 'cat'
@@ -517,14 +518,14 @@ let g:dashboard_custom_shortcut = {
 " let g:dashboard_preview_file_width = 80
 " let g:dashboard_custom_footer = [ 'yaniru' ]
 let g:dashboard_custom_header = [
-\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-\ ' 										Be your own hero.',
-\]
+			\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+			\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+			\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+			\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+			\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+			\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+			\ '											Be your own hero.',
+			\]
 "
 "
 " ===
@@ -542,7 +543,7 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 
-                                             
+
 " ===
 " === asyncrun
 " ===
@@ -589,7 +590,7 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
 
@@ -623,23 +624,23 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+	" Recently vim can merge signcolumn and number column into one
+	set signcolumn=number
 else
-  set signcolumn=yes
+	set signcolumn=yes
 endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-	  \ pumvisible() ? "\<C-n>" :
-	  \ <SID>check_back_space() ? "\<TAB>" :
-	  \ coc#refresh()
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -648,7 +649,7 @@ inoremap <silent><expr> <C-o> coc#refresh()
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-							  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 "
 " inoremap <silent><expr> <CR>
 "       \ pumvisible() ? coc#_select_confirm() :
@@ -661,22 +662,22 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 "   return !col || getline('.')[col - 1]  =~# '\s'
 " endfunction
 inoremap <expr> <c-j>
-     \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetNext', [])<cr>" :
-     \ pumvisible() ? "\<c-n>" :
-     \ "\<c-j>"
+			\ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetNext', [])<cr>" :
+			\ pumvisible() ? "\<c-n>" :
+			\ "\<c-j>"
 inoremap <expr> <c-k>
-     \ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
-     \ pumvisible() ? "\<c-p>" :
-     \ "\<c-k>"
+			\ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
+			\ pumvisible() ? "\<c-p>" :
+			\ "\<c-k>"
 "
 " let g:coc_snippet_next = '<C-j>'
 " let g:cpc_snippet_prev = '<C-k>'
 " imap <C-l> <Plug>(coc-snippets-expand-jump)
 "
 " if exists('*complete_info')
-" 	inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+"	inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 " else
-" 	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " endif
 
 " Use `[g` and `]g` to navigate diagnostics
@@ -694,13 +695,13 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> <LEADER>d :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	elseif (coc#rpc#ready())
+		call CocActionAsync('doHover')
+	else
+		execute '!' . &keywordprg . " " . expand('<cword>')
+	endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -840,7 +841,7 @@ nnoremap sw <C-w><C-w>
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 noremap <LEADER><CR> :nohlsearch<CR>
-noremap K 5<up> 
+noremap K 5<up>
 noremap J 5<down>
 inoremap <C-b> <BS>
 inoremap <C-d> <Delete>
@@ -848,7 +849,7 @@ inoremap <C-l> <Esc>la
 nnoremap R :source ~/.config/nvim/init.vim<CR>:nohlsearch<CR>
 nnoremap sc :e ~/.config/nvim/init.vim<CR>
 nnoremap sa :e ~/.config/nvim/lua/plugins.lua<CR>
-nnoremap sfi :r !figlet 
+nnoremap sfi :r !figlet
 nnoremap S :w<CR>
 nnoremap Q :q!<CR>
 nnoremap sq :bd<CR>
@@ -887,8 +888,8 @@ silent! cal repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 " Other configuration
 if exists('g:nvui')
-  " Configure nvui
-  NvuiCmdFontFamily Jetbrains Mono
-  NvuiCmdFontSize 11.0
-  NvuiScrollAnimationDuration 0.2
+	" Configure nvui
+	NvuiCmdFontFamily Jetbrains Mono
+	NvuiCmdFontSize 11.0
+	NvuiScrollAnimationDuration 0.2
 endif
