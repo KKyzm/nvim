@@ -656,7 +656,7 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
 	" Recently vim can merge signcolumn and number column into one
-	set signcolumn=number
+	set signcolumn=yes
 else
 	set signcolumn=yes
 endif
@@ -924,3 +924,5 @@ if exists('g:nvui')
 	NvuiCmdFontSize 11.0
 	NvuiScrollAnimationDuration 0.2
 endif
+
+autocmd FileType c,h set shiftwidth=2
