@@ -11,10 +11,6 @@
 " clangd
 " clang-format
 " riggrep
-"
-" cd ~/.config/coc/extensions/node_modules/coc-ccls
-" ln -s node_modules/ws/lib lib
-"
 " pynvim
 " keyring
 " browser-cookie3
@@ -113,8 +109,6 @@ Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-repeat'
 "
 Plug 'glepnir/dashboard-nvim'
-
-Plug 'psliwka/vim-smoothie'
 
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -277,7 +271,7 @@ enable = true,
 additional_vim_regex_highlighting = false,
 },
   indent = {
-  enable = false,
+  enable = true,
   disable = {},
   },
 }
@@ -454,7 +448,6 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 " === illuminate
 " ===
 let g:Illuminate_delay = 500
-" Don't highlight word under cursor (default: 1)
 let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftwhitelist = ['python', 'vim', 'sh', 'c', 'h', 'cc', 'hh', 'cpp', 'hpp']
 augroup illuminate_augroup
@@ -745,34 +738,34 @@ nmap <leader>rn <Plug>(coc-rename)
 " xmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
 
-" augroup mygroup
-"   autocmd!
-"   " Setup formatexpr specified filetype(s).
-"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"   " Update signature help on jump placeholder.
-"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-" augroup end
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 "
 " " Applying codeAction to the selected region.
 " " Example: `<leader>aap` for current paragraph
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
+xnoremap <leader>ca  <Plug>(coc-codeaction-selected)
+nnoremap <leader>ca  <Plug>(coc-codeaction-selected)
 "
 " " Remap keys for applying codeAction to the current buffer.
-" nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ac  <Plug>(coc-codeaction)
 " " Apply AutoFix to problem on the current line.
-" nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>qf  <Plug>(coc-fix-current)
 "
 " " Map function and class text objects
 " " NOTE: Requires ' textDocument.documentSymbol' support from the language server.
-" xmap if <Plug>(coc-funcobj-i)
-" omap if <Plug>(coc-funcobj-i)
-" xmap af <Plug>(coc-funcobj-a)
-" omap af <Plug>(coc-funcobj-a)
-" xmap ic <Plug>(coc-classobj-i)
-" omap ic <Plug>(coc-classobj-i)
-" xmap ac <Plug>(coc-classobj-a)
-" omap ac <Plug>(coc-classobj-a)
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 " if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -784,43 +777,38 @@ nmap <leader>rn <Plug>(coc-rename)
 "   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 " endif
 
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-" nmap <silent> <C-s> <Plug>(coc-range-select)
-" xmap <silent> <C-s> <Plug>(coc-range-select)
-
 " Add `:Format` command to format current buffer.
-" command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 Format :call CocAction('format')
 "
 " " Add `:Fold` command to fold current buffer.
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 "
 " " Add `:OR` command for organize imports of the current buffer.
-" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 "
 " " Add (Neo)Vim's native statusline support.
 " " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " " provide custom statusline: lightline.vim, vim-airline.
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "
-" " Mappings for CoCList
-" " Show all diagnostics.
-" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" " Manage extensions.
-" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" " Show commands.
-" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document.
-" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" " Search workspace symbols.
-nnoremap <silent><nowait> <LEADER>sy  :<C-u>CocList -I symbols<cr>
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>od  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>oe  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>oc  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>oo  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>os  :<C-u>CocList -I symbols<cr>
 " " Do default action for next item.
 " nnoremap <silent><nowait> <C-j>  :<C-u>CocNext<CR>
 " " Do default action for previous item.
 " nnoremap <silent><nowait> <C-k>  :<C-u>CocPrev<CR>
 "
-" " Resume latest coc list.
-" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 " coc-translator
@@ -828,12 +816,6 @@ nnoremap <silent><nowait> <LEADER>sy  :<C-u>CocList -I symbols<cr>
 " popup
 nmap <Leader>t <Plug>(coc-translator-p)
 vmap <Leader>t <Plug>(coc-translator-pv)
-" echo
-" nmap <Leader>e <Plug>(coc-translator-e)
-" vmap <Leader>e <Plug>(coc-translator-ev)
-" replace
-" nmap <Leader>r <Plug>(coc-translator-r)
-" vmap <Leader>r <Plug>(coc-translator-rv)
 
 
 " ===
@@ -862,7 +844,8 @@ set incsearch
 set ignorecase
 set smartcase
 
-nnoremap ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
+" nnoremap ;y : !/mnt/c/Windows/System32/clip.exe<cr>u
+tnoremap <LEADER><ESC> <C-\><C-n>
 
 vnoremap Y "+y
 
@@ -926,3 +909,4 @@ if exists('g:nvui')
 endif
 
 autocmd FileType c,h set shiftwidth=2
+hi CursorLine ctermfg=242 ctermbg=59 guibg=#4b5263
