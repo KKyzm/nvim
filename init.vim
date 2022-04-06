@@ -33,9 +33,6 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 set nolist
-" set list;
-" set listchars=eol:$,tab:>-,space:·
-" hi SpecialKey ctermfg=DarkRed guifg=grey70
 
 filetype on
 filetype indent on
@@ -51,15 +48,12 @@ let mapleader=" "
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
 Plug 'kshenoy/vim-signature'
 " copy&paste register
 Plug 'junegunn/vim-peekaboo'
-" need Go
-" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 "
-" @@ unused @@
 " Plug 'ianding1/leetcode.vim'
 
 Plug 'RRethy/vim-illuminate'
@@ -68,15 +62,13 @@ Plug 'Sirver/ultisnips'
 
 Plug 'ajmwagar/vim-deus'
 Plug 'jacoborus/tender.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'navarasu/onedark.nvim'
 Plug 'liuchengxu/space-vim-dark'
-Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'connorholyday/vim-snazzy'
 Plug 'sainnhe/gruvbox-material'
 
-" @@ unused @@
 Plug 'junegunn/vim-easy-align'
 
 Plug 'skywind3000/asyncrun.vim'
@@ -85,7 +77,7 @@ Plug 'vim-autoformat/vim-autoformat'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'gcmt/wildfire.vim'
@@ -97,9 +89,9 @@ Plug 'romgrk/barbar.nvim'
 
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'PhilRunninger/nerdtree-buffer-ops'
+" Plug 'PhilRunninger/nerdtree-buffer-ops'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -118,32 +110,33 @@ call plug#end()
 " === COLORS ===
 " ==============
 
+let g:onedark_config = {
+    \ 'style': 'cool',
+    \ 'ending_tildes': v:true,
+    \ 'diagnostics': {
+    \ 'darker': v:true,
+    \ 'background': v:true,
+    \ },
+\ }
 " colorscheme snazzy
 " colorscheme tender
 " colorscheme deus
 " colorscheme space-vim-dark
-" colorscheme onedark
-colorscheme one
+colorscheme onedark
+"
+" let g:airline_theme = 'tender'
+" let g:airline_theme = 'zenburn'
+let g:airline_theme='onedark'
+"
+
+" ===
+" === gruvbox-material
+" ===
 " This configuration option should be placed before `colorscheme gruvbox-material`.
 " Available values: 'hard', 'medium'(default), 'soft'
 " let g:gruvbox_material_background = 'medium'
 " colorscheme gruvbox-material
 "
-" let g:airline_theme = 'tender'
-" let g:airline_theme = 'zenburn'
-" let g:airline_theme='one'
-let g:airline_theme='onedark'
-"
-let g:one_allow_italics = 1 " I love italic for comments
-" let g:onedark_terminal_italics = 1
-"
-" set background=dark " for the dark version
-" set background=light " for the light version
-
-
-" ===
-" === gruvbox-material
-" ===
 " Important!!
 if has('termguicolors')
 	set termguicolors
@@ -172,11 +165,10 @@ syntax enable
 " ===
 " === airline
 " ===
-set laststatus=2  "永远显示状态栏let
-let g:airline_powerline_fonts=1  " 支持 powerline 字体
-let g:airline#extensions#tabline#enabled=0 "显示窗口tab和bufferlet
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#buffer_idx_mode=1
-"g:airline_theme='moloai'
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
@@ -289,7 +281,7 @@ nnoremap <LEADER>hd :HopChar2<CR>
 " ===
 " === wildfire (select text objects with <CR> & <BS>)
 " ===
-let g:wildfire_objects = ["iw", "iW", "i'", 'i>', 'i"', "i)", "i]", "i}", "ip", "it"]
+let g:wildfire_objects = [ "i'", 'i>', 'i"', "i)", "i]", "i}", "ip", "it"]
 nmap <leader>ws <Plug>(wildfire-quick-select)
 
 
@@ -415,14 +407,12 @@ hi link BufferVisibleMod Label
 " === vim-autoformat
 " ===
 " clang-format, python3-autopep8, js-beautify, black, stylua
-let g:autoformat_verbosemode=1 "开启详细模式便于查错
+let g:autoformat_verbosemode=1
 " autocmd BufWrite *.c,*.cc,*.hh,*.py,*.json,*.lua :Autoformat
 nnoremap <C-A-f> :Autoformat<CR>
 vnoremap <C-A-f> :Autoformat<CR>
 let g:python3_host_prog="/usr/bin/python3"
 
-" let g:formatdef_clangformat = '"clang-format -style=\"{BasedOnStyle: google, IndentWidth: 4}\""'
-" let g:formatdef_jsbeautify = '"js-beautify"'
 let g:formatters_c = ['clangformat']
 let g:formatters_jsonc = ['js-beautify']
 let g:formatters_python = ['black']
@@ -475,27 +465,20 @@ nmap ga <Plug>(EasyAlign)
 " set updatetime=100
 "
 
-"
-" let g:lightline = {
-"       \ 'colorscheme': 'hydrangea',
-"       \ 'component': {
-"       \   'readonly': '%{&readonly?"":""}',
-"       \ },
-"       \ 'separator':    { 'left': '', 'right': '' },
-"       \ 'subseparator': { 'left': '', 'right': '' },
-"       \ }
-
-
 " ===
 " === NERDTree
 " ===
 " Exit Vim if NERDTree is the only window remaining in the only tab.
-" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 "
 " Close the tab if NERDTree is the only window remaining in it.
-" autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 nnoremap <LEADER>nn :NERDTreeToggle<CR>
 nnoremap <LEADER>nf :NERDTreeFocus<CR>
+
+
+let g:NERDTreeDirArrowExpandable = '─▸'
+let g:NERDTreeDirArrowCollapsible = '╰▸'
 
 
 " ===
@@ -556,9 +539,6 @@ let g:dashboard_custom_header = [
 " === snippets
 " ===
 
-" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
-" - https://github.com/Valloric/YouCompleteMe
-" - https://github.com/nvim-lua/completion-nvim
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
@@ -777,19 +757,11 @@ omap ac <Plug>(coc-classobj-a)
 "   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 " endif
 
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 "
-" " Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-"
-" " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-"
-" " Add (Neo)Vim's native statusline support.
-" " NOTE: Please see `:h coc-status` for integrations with external plugins that
-" " provide custom statusline: lightline.vim, vim-airline.
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 "
 " Mappings for CoCList
 " Show all diagnostics.
@@ -848,6 +820,11 @@ set smartcase
 tnoremap <LEADER><ESC> <C-\><C-n>
 
 vnoremap Y "+y
+" relate to System Paste Pad
+noremap <LEADER>y "*y
+noremap <LEADER>p "*p
+" paste without considering Cut
+noremap <LEADER>P "0p
 
 " switch windows
 nnoremap sw <C-w><C-w>
@@ -897,16 +874,10 @@ set nocursorcolumn
 set scrolloff=15
 
 " to reload rainbow plug after source vimrc
-call rainbow_main#load()
+" call rainbow_main#load()
+
 silent! cal repeat#set("\<Plug>MyWonderfulMap", v:count)
 
-" Other configuration
-if exists('g:nvui')
-	" Configure nvui
-	NvuiCmdFontFamily Jetbrains Mono
-	NvuiCmdFontSize 11.0
-	NvuiScrollAnimationDuration 0.2
-endif
 
 autocmd FileType c,h set shiftwidth=2
 hi CursorLine ctermfg=242 ctermbg=59 guibg=#4b5263
