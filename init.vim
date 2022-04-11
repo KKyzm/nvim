@@ -107,13 +107,13 @@ call plug#end()
 " ==============
 
 let g:onedark_config = {
-    \ 'style': 'cool',
-    \ 'ending_tildes': v:true,
-    \ 'diagnostics': {
-    \ 'darker': v:true,
-    \ 'background': v:true,
-    \ },
-\ }
+			\ 'style': 'cool',
+			\ 'ending_tildes': v:true,
+			\ 'diagnostics': {
+				\ 'darker': v:true,
+				\ 'background': v:true,
+				\ },
+				\ }
 " colorscheme snazzy
 " colorscheme tender
 " colorscheme deus
@@ -163,15 +163,17 @@ syntax enable
 " ===
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 " let g:airline#extensions#tabline#buffer_idx_mode=1
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 " powerline symbols
 let g:airline_left_sep = ''
+" let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
+" let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.colnr = ' :'
@@ -355,7 +357,7 @@ let bufferline.clickable = v:true
 " if set to 'buffer_number', will show buffer number in the tabline
 " if set to 'numbers', will show buffer index in the tabline
 " if set to 'both', will show buffer index and icons in the tabline
-let bufferline.icons = v:true
+let bufferline.icons = "both"
 
 " Sets the icon's highlight group.
 " If false, will use nvim-web-devicons colors
@@ -395,8 +397,8 @@ let bufferline.letters =
 " where X is the buffer number. But only a static string is accepted here.
 let bufferline.no_name_title = v:null
 
-hi link BufferCurrentMod Label
-hi link BufferVisibleMod Label
+" hi link BufferCurrentMod Label
+" hi link BufferVisibleMod Label
 
 
 " ===
@@ -480,11 +482,11 @@ let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree 
 let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
 let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
+			\ 'git': 1,
+			\ 'folders': 1,
+			\ 'files': 1,
+			\ 'folder_arrows': 1,
+			\ }
 "If 0, do not show the icons for one of 'git' 'folder' and 'files'
 "1 by default, notice that if 'files' is 1, it will only display
 "if nvim-web-devicons is installed and on your runtimepath.
@@ -494,28 +496,28 @@ let g:nvim_tree_show_icons = {
 " default will show icon by default if no icon is provided
 " default shows no icon by default
 let g:nvim_tree_icons = {
-    \ 'default': "",
-    \ 'symlink': "",
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
+\ 'default': "",
+\ 'symlink': "",
+\ 'git': {
+\   'unstaged': "✗",
+\   'staged': "✓",
+\   'unmerged': "",
+\   'renamed': "➜",
+\   'untracked': "★",
+\   'deleted': "",
+\   'ignored': "◌"
+\   },
+\ 'folder': {
+\   'arrow_open': "",
+\   'arrow_closed': "",
+\   'default': "",
+\   'open': "",
+\   'empty': "",
+\   'empty_open': "",
+\   'symlink': "",
+\   'symlink_open': "",
+\   }
+\ }
 
 nnoremap <LEADER>nn :NvimTreeToggle<CR>
 nnoremap <LEADER>nr :NvimTreeRefresh<CR>
@@ -773,11 +775,11 @@ nmap <leader>rn <Plug>(coc-rename)
 " nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+	autocmd!
+	" Setup formatexpr specified filetype(s).
+	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+	" Update signature help on jump placeholder.
+	autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 "
 " " Applying codeAction to the selected region.
@@ -935,4 +937,5 @@ silent! cal repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 
 autocmd FileType c,h set shiftwidth=2
-hi CursorLine ctermfg=242 ctermbg=59 guibg=#4b5263
+" hi CursorLine ctermfg=242 ctermbg=59 guibg=#4b5263
+hi CursorLine ctermfg=242 ctermbg=59 guibg=#384050

@@ -84,7 +84,7 @@
         "bing",
         "haici"
     ],
-    "clangd.path" : "clangd",
+	"clangd.path" : "clangd",
     "languageserver": {
         // "ccls": {
         //     "command": "ccls",
@@ -98,10 +98,10 @@
         //     }
         // },
 
-        // "coc.clangd": {
-        //     "command": "clangd",
-        //     "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-        //     "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
-        // }
+		// "coc.clangd": {
+		//     "command": "clangd",
+		//     "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+		//     "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+		// }
     }
 }
