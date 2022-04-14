@@ -12,10 +12,9 @@
 " clang-format
 " riggrep
 " pynvim
-" keyring
-" browser-cookie3
-" pip3 install pynvim --user
-" pip3 install keyring browser-cookie3 --user
+" pip install pynvim --user
+" pip install cmake-language-server
+" pip install cmake-format
 "
 "
 " Check if vim-plug is installed.
@@ -657,7 +656,7 @@ let g:NERDToggleCheckAllLines = 1
 " ===
 " === COC
 " ===
-let g:coc_global_extensions=['coc-vimlsp', 'coc-marketplace', 'coc-clangd', 'coc-translator']
+let g:coc_global_extensions=['coc-vimlsp', 'coc-marketplace', 'coc-clangd', 'coc-translator', 'coc-cmake']
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -830,6 +829,7 @@ nnoremap <silent><nowait> <space>oc  :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>oo  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>os  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <space>ol  :CocList<cr>
 " " Do default action for next item.
 " nnoremap <silent><nowait> <C-j>  :<C-u>CocNext<CR>
 " " Do default action for previous item.
@@ -907,6 +907,10 @@ nnoremap <LEADER><right> :set splitright<CR>:vsp<CR>
 nnoremap <LEADER><left> :set nosplitright<CR>:vsp<CR>
 nnoremap <LEADER><down> :set splitright<CR>:sp<CR>
 nnoremap <LEADER><up> :set nosplitright<CR>:sp<CR>
+nnoremap <LEADER>wl <C-w>l
+nnoremap <LEADER>wh <C-w>h
+nnoremap <LEADER>wj <C-w>j
+nnoremap <LEADER>wk <C-w>k
 nnoremap ,f <ESC>/<++><CR>:nohlsearch<CR>c4l
 nnoremap ,m <Esc>a<++><Esc>2h
 nnoremap s; mzA;<Esc>`z:delm z<CR>
