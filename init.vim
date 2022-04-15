@@ -656,7 +656,7 @@ let g:NERDToggleCheckAllLines = 1
 " ===
 " === COC
 " ===
-let g:coc_global_extensions=['coc-vimlsp', 'coc-marketplace', 'coc-clangd', 'coc-translator', 'coc-cmake']
+let g:coc_global_extensions=['coc-vimlsp', 'coc-diagnostic', 'coc-marketplace', 'coc-clangd', 'coc-translator', 'coc-cmake']
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -770,8 +770,8 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
 	autocmd!
