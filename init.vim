@@ -89,7 +89,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'mg979/vim-visual-multi'
 Plug 'liuchengxu/vista.vim'
 
