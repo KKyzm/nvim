@@ -509,20 +509,20 @@ set termguicolors " this variable must be enabled for colors to be applied prope
 " let g:fzf_command_prefix = 'fzf'
 " float window version
 nnoremap <LEADER>sb :Buffers<CR>
-nnoremap <LEADER>sf :Files<CR>
+" nnoremap <LEADER>sf :Files<CR>
 nnoremap <LEADER>si :Lines<CR>
 nnoremap <LEADER>sL :Rg<CR>
-nnoremap <LEADER>st :BTags<CR>
-nnoremap <LEADER>sT :Tags<CR>
+" nnoremap <LEADER>st :BTags<CR>
+" nnoremap <LEADER>sT :Tags<CR>
 nnoremap <LEADER>sw :Windows<CR>
 nnoremap <LEADER>sm :Marks<CR>
 nnoremap <LEADER>sh :History<CR>
 nnoremap <LEADER>s: :History:<CR>
 nnoremap <LEADER>s/ :History/<CR>
-nnoremap <LEADER>sg :GFiles?<CR>
+" nnoremap <LEADER>sg :GFiles?<CR>
 nnoremap <LEADER>sG :Commits<CR>
 nnoremap <LEADER>sc :Colors<CR>
-nnoremap <LEADER>sd :Files
+" nnoremap <LEADER>sd :Files
 
 nnoremap <Leader>ss :<C-u>SessionSave<CR>
 nnoremap <Leader>sl :<C-u>SessionLoad<CR>

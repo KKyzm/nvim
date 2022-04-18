@@ -48,9 +48,9 @@ return require("packer").startup(function()
 	use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
 	
 	local servers = { 'clangd', 'ccls'}
-	require'lspconfig'.clangd.setup {
-		on_attach = on_attach
-	}
+	-- require'lspconfig'.clangd.setup {
+	--     on_attach = on_attach
+	-- }
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
