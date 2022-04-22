@@ -60,8 +60,8 @@ Plug 'honza/vim-snippets'
 Plug 'Sirver/ultisnips'
 
 Plug 'ajmwagar/vim-deus'
-Plug 'jacoborus/tender.vim'
-Plug 'navarasu/onedark.nvim'
+" Plug 'navarasu/onedark.nvim'
+Plug 'joshdick/onedark.vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -103,25 +103,58 @@ call plug#end()
 " === COLORS ===
 " ==============
 
-let g:onedark_config = {
-			\ 'style': 'cool',
-			\ 'ending_tildes': v:true,
-			\ 'diagnostics': {
-				\ 'darker': v:true,
-				\ 'background': v:true,
-				\ },
-				\ }
+" let g:onedark_config = {
+"             \ 'style': 'darker',
+"             \ 'ending_tildes': v:true,
+"             \ 'diagnostics': {
+"                 \ 'darker': v:true,
+"                 \ 'background': v:true,
+"                 \ },
+"                 \ }
 " colorscheme snazzy
-" colorscheme tender
 " colorscheme deus
 " colorscheme space-vim-dark
 colorscheme onedark
+let g:onedark_terminal_italics=1
+" let g:onedark_hide_endofbuffer=1
+" let g:onedark_termcolors=256
 "
-" let g:airline_theme = 'tender'
 " let g:airline_theme = 'zenburn'
+
+
+hi link TSVariable TSKeyword
+
+if (has("autocmd"))
+  augroup colorextend
+    autocmd!
+    " Make `Function`s bold in GUI mode
+    call onedark#extend_highlight("Function", { "gui": "bold" })
+    " autocmd ColorScheme * call onedark#extend_highlight("Function", { "gui": "bold" })
+    " Override the `Statement` foreground color in 256-color mode
+    autocmd ColorScheme * call onedark#extend_highlight("Statement", { "fg": { "cterm": 128 } })
+  augroup END
+endif
+
 let g:airline_theme='onedark'
 "
 
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+"
 " ===
 " === gruvbox-material
 " ===
@@ -189,10 +222,14 @@ let g:airline_symbols.dirty='⚡'
 " nnoremap <leader>ls :LeetCodeSubmit<cr>
 " nnoremap <leader>li :LeetCodeSignIn<cr>
 
+lua require('plugins')
 
 " ===
 " === nvim-treesitter
 " ===
+
+nnoremap <LEADER>hh :TSHighlightCapturesUnderCursor<CR>
+
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
 	-- One of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -224,12 +261,32 @@ enable = true,
 -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
 -- Using this option may slow down your editor, and you may see some duplicate highlights.
 -- Instead of true it can also be a list of languages
-additional_vim_regex_highlighting = false,
+additional_vim_regex_highlighting = true,
 },
   indent = {
   enable = true,
   disable = {},
   },
+
+playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+
 }
 EOF
 
@@ -406,8 +463,7 @@ let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftwhitelist = ['python', 'vim', 'sh', 'c', 'h', 'cc', 'hh', 'cpp', 'hpp']
 augroup illuminate_augroup
 	autocmd!
-	autocmd VimEnter * hi link illuminatedWord MatchParen
-	" autocmd VimEnter * hi illuminatedWord ctermbg=#212121 guibg=#212121
+    autocmd VimEnter * hi link illuminatedWord CursorLine
 augroup END
 
 
@@ -819,7 +875,6 @@ lua <<EOF
 require'nvim-tree'.setup()
 EOF
 
-lua require('plugins')
 "------------------------------------------------------------------
 "------------------------------------------------------------------
 
@@ -828,6 +883,7 @@ set number
 set relativenumber
 set autoindent
 set shiftwidth=4
+set expandtab
 set tabstop=4
 set nocompatible
 set wrap
@@ -908,4 +964,4 @@ silent! cal repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 autocmd FileType c,h set shiftwidth=2
 " hi CursorLine ctermfg=242 ctermbg=59 guibg=#4b5263
-hi CursorLine ctermfg=242 ctermbg=59 guibg=#384050
+hi CursorLine guibg=#384050
