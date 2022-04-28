@@ -19,12 +19,12 @@
 "
 " Check if vim-plug is installed.
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 if empty(glob('~/.local/share/nvim/site/pack/packer/start/packer.nvim'))
-	silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 endif
 
 map <up> <nop>
@@ -72,7 +72,7 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
-Plug 'vim-autoformat/vim-autoformat'
+" Plug 'vim-autoformat/vim-autoformat'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -425,22 +425,6 @@ let bufferline.no_name_title = v:null
 
 
 " ===
-" === vim-autoformat
-" ===
-" clang-format, python3-autopep8, js-beautify, black, stylua
-let g:autoformat_verbosemode=1
-" autocmd BufWrite *.c,*.cc,*.hh,*.py,*.json,*.lua :Autoformat
-nnoremap <C-A-f> :Autoformat<CR>
-vnoremap <C-A-f> :Autoformat<CR>
-let g:python3_host_prog="/usr/bin/python3"
-
-let g:formatters_c = ['clangformat']
-let g:formatters_jsonc = ['js-beautify']
-let g:formatters_python = ['black']
-let g:formatters_lua = ['stylua']
-
-
-" ===
 " === auto-pairs
 " ===
 let g:AutoPairsFlyMode = 0
@@ -463,7 +447,9 @@ let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftwhitelist = ['python', 'vim', 'sh', 'c', 'h', 'cc', 'hh', 'cpp', 'hpp']
 augroup illuminate_augroup
 	autocmd!
-    autocmd VimEnter * hi link illuminatedWord CursorLine
+    hi CursorLine guibg=#384050
+    hi link illuminatedWord CursorLine
+    " hi illuminatedWord cterm=underline gui=underline
 augroup END
 
 
@@ -678,7 +664,7 @@ let g:NERDToggleCheckAllLines = 1
 " ===
 " === COC
 " ===
-let g:coc_global_extensions=['coc-vimlsp', 'coc-diagnostic', 'coc-marketplace', 'coc-clangd', 'coc-translator', 'coc-cmake']
+let g:coc_global_extensions=['coc-vimlsp', 'coc-diagnostic', 'coc-marketplace', 'coc-clangd', 'coc-translator', 'coc-cmake', 'coc-snippets', 'coc-json']
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -692,7 +678,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-" set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -701,15 +687,7 @@ set updatetime=100
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-	" Recently vim can merge signcolumn and number column into one
-	set signcolumn=yes
-else
-	set signcolumn=yes
-endif
+set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -825,14 +803,14 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
-" if has('nvim-0.4.0') || has('patch-8.2.0750')
-"   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-"   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-"   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-"   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-" endif
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
@@ -845,6 +823,8 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 nnoremap <silent><nowait> <space>od  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>oe  :<C-u>CocList extensions<cr>
+" Show marketplace
+nnoremap <silent><nowait> <space>om  :<C-u>CocList marketplace<CR>
 " Show commands.
 nnoremap <silent><nowait> <space>oc  :<C-u>CocList commands<cr>
 " Find symbol of current document.
@@ -856,10 +836,6 @@ nnoremap <silent><nowait> <space>ol  :CocList<cr>
 " nnoremap <silent><nowait> <C-j>  :<C-u>CocNext<CR>
 " " Do default action for previous item.
 " nnoremap <silent><nowait> <C-k>  :<C-u>CocPrev<CR>
-"
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
 
 " coc-translator
 " NOTE: do NOT use `nore` mappings
@@ -869,7 +845,7 @@ vmap <Leader>t <Plug>(coc-translator-pv)
 
 
 " ===
-" === tabout
+" ===
 " ===
 lua <<EOF
 require'nvim-tree'.setup()
@@ -964,4 +940,3 @@ silent! cal repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 autocmd FileType c,h set shiftwidth=2
 " hi CursorLine ctermfg=242 ctermbg=59 guibg=#4b5263
-hi CursorLine guibg=#384050

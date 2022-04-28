@@ -1,12 +1,10 @@
 {
-    "dignostic-languageserver.filetypes": {
-		"cmake": "cmake-lint"
-    },
     "diagnostic-languageserver.linters": {},
 	"diagnostic-languageserver.formatFiletypes": {
 		"python": ["black", "isort"],
 		"lua": "lua-format",
 		"cmake": "cmake-format",
+        "cc": "clang-format"
 	},
 	"diagnostic-languageserver.trace.server": "verbose",
 
@@ -24,16 +22,6 @@
 	"clangd.path": "clangd",
 	"cmake.lsp.enable": true,
 	"languageserver": {
-		// "cmake": {
-		//   "command": "cmake-language-server",
-		//   "filetypes": ["cmake"],
-		//   "rootPatterns": [
-		//     "build/"
-		//   ],
-		//   "initializationOptions": {
-		//     "buildDirectory": "build"
-		//   }
-		// }
         // "ccls": {
         //     "command": "ccls",
         //     "trace.server": "verbose",
