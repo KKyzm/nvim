@@ -1,5 +1,4 @@
 return {
-
   -- modern Neovim fold
   {
     "kevinhwang91/nvim-ufo",
