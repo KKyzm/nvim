@@ -5,3 +5,7 @@
 local opt = vim.opt
 
 opt.exrc = true -- Project-specific configuration
+
+if vim.g.neovide then
+  opt.guifont = "Maple Mono:h7.5"
+end
