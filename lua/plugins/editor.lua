@@ -69,4 +69,14 @@ return {
 
   -- distraction-free coding
   { "folke/zen-mode.nvim", cmd = "ZenMode" },
+
+  -- easy align
+  {
+    "echasnovski/mini.align",
+    event = "VeryLazy",
+    version = "*",
+    config = function()
+      require("mini.align").setup()
+    end,
+  },
 }
