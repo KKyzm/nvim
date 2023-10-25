@@ -79,4 +79,14 @@ return {
       require("mini.align").setup()
     end,
   },
+
+  -- incremental selection
+  {
+    "sustech-data/wildfire.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("wildfire").setup()
+    end,
+  },
 }
