@@ -82,12 +82,18 @@ return {
 
   -- incremental selection
   {
-    "sustech-data/wildfire.nvim",
-    event = "VeryLazy",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("wildfire").setup()
-    end,
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          scope_incremental = "<TAB>",
+          node_incremental = "<CR>",
+          node_decremental = "<BS>",
+          init_selection = "<CR>",
+        },
+      },
+    },
   },
 
   -- explanation for regex
