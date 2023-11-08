@@ -1,7 +1,8 @@
 return {
+  { import = "lazyvim.plugins.extras.editor.aerial" },
+
   {
     "stevearc/aerial.nvim",
-    optional = true,
     opts = {
       layout = {
         -- max width is the lesser of 40 cols or 30% of total
