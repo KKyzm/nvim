@@ -3,7 +3,7 @@ return {
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
-    event = { "BufReadPre *.norg", "BufNewFile *.norg" },
+    ft = "norg",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("neorg").setup({
@@ -17,7 +17,23 @@ return {
               },
             },
           },
+          ["core.completion"] = {
+            config = {
+              engine = "nvim-cmp",
+            },
+          },
         },
+      })
+    end,
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    optional = true,
+    opts = function(_, opts)
+      table.insert(opts.sources, 1, {
+        name = "neorg",
+        group_index = 1,
       })
     end,
   },
