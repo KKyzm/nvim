@@ -9,4 +9,5 @@ opt.spelllang = { "en", "cjk" }
 
 if vim.g.neovide then
   opt.guifont = "Maple Mono:h7.5"
+  vim.g.neovide_cursor_vfx_mode = "sonicboom"
 end
