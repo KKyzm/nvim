@@ -6,4 +6,10 @@ return {
       colorscheme = "tokyonight",
     },
   },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      dim_inactive = true, -- dims inactive windows
+    },
+  },
 }
