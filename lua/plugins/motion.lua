@@ -10,4 +10,16 @@ return {
       { "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window" } },
     },
   },
+
+  -- flash: disable plugin on / and ?
+  {
+    "folke/flash.nvim",
+    opts = {
+      modes = {
+        search = {
+          enabled = false,
+        },
+      },
+    },
+  },
 }
