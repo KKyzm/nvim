@@ -24,6 +24,11 @@ return {
       { "<leader>b<left>", "<Cmd>BufferLineMovePrev<CR>", desc = "Close other buffers" },
       { "<leader>b<right>", "<Cmd>BufferLineMoveNext<CR>", desc = "Close other buffers" },
     },
+    opts = {
+      options = {
+        separator_style = "slant",
+      },
+    },
   },
 
   -- <tab> to jump out of brackets
