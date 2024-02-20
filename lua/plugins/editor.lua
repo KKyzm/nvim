@@ -21,9 +21,8 @@ return {
   {
     "akinsho/bufferline.nvim",
     keys = {
-      { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close other buffers" },
-      { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Close left buffers" },
-      { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Close right buffers" },
+      { "<leader>b<left>", "<Cmd>BufferLineMovePrev<CR>", desc = "Close other buffers" },
+      { "<leader>b<right>", "<Cmd>BufferLineMoveNext<CR>", desc = "Close other buffers" },
     },
   },
 
