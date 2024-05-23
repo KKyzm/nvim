@@ -13,7 +13,10 @@ require("lazy").setup({
 
     -- LazyVim extras
     -- { import = "lazyvim.plugins.extras.coding.codeium" },
+    { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
+    { import = "lazyvim.plugins.extras.editor.illuminate" },
+    -- { import = "lazyvim.plugins.extras.editor.outline" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
     -- { import = "lazyvim.plugins.extras.lang.cmake" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
@@ -21,6 +24,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.util.project" },
+    { import = "lazyvim.plugins.extras.util.dot" },
     { import = "lazyvim.plugins.extras.vscode" },
 
     -- custom plugins
@@ -29,6 +33,7 @@ require("lazy").setup({
     -- custom extras
     { import = "plugins.extras.neovide" },
     { import = "plugins.extras.editor.aerial" },
+    { import = "plugins.extras.editor.refactoring" },
     { import = "plugins.extras.ui.mini-animate" },
   },
   defaults = {
