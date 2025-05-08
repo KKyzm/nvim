@@ -21,8 +21,8 @@ return {
   {
     "akinsho/bufferline.nvim",
     keys = {
-      { "<leader>b<left>", "<Cmd>BufferLineMovePrev<CR>", desc = "Close other buffers" },
-      { "<leader>b<right>", "<Cmd>BufferLineMoveNext<CR>", desc = "Close other buffers" },
+      { "<leader>b<left>", "<Cmd>BufferLineMovePrev<CR>", desc = "Move buffer prev" },
+      { "<leader>b<right>", "<Cmd>BufferLineMoveNext<CR>", desc = "Move buffer next" },
     },
     opts = {
       options = {
@@ -98,17 +98,5 @@ return {
         },
       },
     },
-  },
-
-  -- explanation for regex
-  {
-    "tomiis4/Hypersonic.nvim",
-    event = "CmdlineEnter",
-    cmd = "Hypersonic",
-    config = function()
-      require("hypersonic").setup({
-        -- config
-      })
-    end,
   },
 }
